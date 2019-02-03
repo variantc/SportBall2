@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject[] team;
-    public GameObject playerPrefab;
+    public Player[] team;
+    public Player playerPrefab;
 
     int numPlayers = 5;
 
     Color playerColour = Color.red;
     Color selectColour = Color.blue;
 
-    public GameObject selectedPlayer;
+    public Player selectedPlayer;
 
     Vector3 destination;
     public float forceStrength;
 
 	// Use this for initialization
 	void Start () {
-        team = new GameObject[numPlayers];
+        team = new Player[numPlayers];
 
         for (int i=0; i<numPlayers; i++)
         {
@@ -39,11 +39,11 @@ public class PlayerController : MonoBehaviour {
     //    }
     //}
 
-    public void SwitchSelectPlayer(GameObject newSelectedPlayer)
+    public void SwitchSelectPlayer(Player newSelectedPlayer)
     {
         UnSelectPlayer();
         selectedPlayer = newSelectedPlayer;
-        selectedPlayer.GetComponent<SpriteRenderer>().color = selectColour;
+        selectedPlayer.SetColour(selectColour);
     }
 
     public void GiveDestination (Vector3 clickPos)
@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour {
         {
             destination = new Vector3(clickPos.x, clickPos.y, 0f);
             //selectedPlayer.transform.position = destination;
-            selectedPlayer.GetComponent<Rigidbody2D>().AddForce(forceStrength * (destination - selectedPlayer.transform.position).normalized);
+            //selectedPlayer.GetComponent<Rigidbody2D>().AddForce(forceStrength * (destination - selectedPlayer.transform.position).normalized);
+            selectedPlayer.SetDestination(destination);
         }
     }
 
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (selectedPlayer != null)
         {
-            selectedPlayer.GetComponent<SpriteRenderer>().color = playerColour;
+            selectedPlayer.SetColour(playerColour);
             selectedPlayer = null;
         }
     }

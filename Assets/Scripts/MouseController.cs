@@ -18,7 +18,8 @@ public class MouseController : MonoBehaviour {
             // see if clicked on player
             if (DoRayCast("Player") != null)
             {
-                playerController.SwitchSelectPlayer(DoRayCast("Player"));
+                // DoRayCast deals with gameObjects, so get the Player component
+                playerController.SwitchSelectPlayer(DoRayCast("Player").GetComponent<Player>());
             }
             // de-select player if click on non-player location
             else
@@ -30,6 +31,7 @@ public class MouseController : MonoBehaviour {
         }
     }
 
+    // General function for selecting any GameObject type
     private GameObject DoRayCast(string tag)
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);

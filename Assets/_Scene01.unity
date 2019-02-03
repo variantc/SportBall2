@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: []
-  playerPrefab: {fileID: 1109491226294206, guid: d77302d0f00e29b44b9d3b892e9f93f4,
+  playerPrefab: {fileID: 114478030616353668, guid: d77302d0f00e29b44b9d3b892e9f93f4,
     type: 2}
   selectedPlayer: {fileID: 0}
   forceStrength: 500
