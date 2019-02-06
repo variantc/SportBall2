@@ -5,25 +5,36 @@ using UnityEngine;
 public class MouseController : MonoBehaviour {
 
     PlayerController playerController;
+    Ball ball;
 
     // Use this for initialization
     void Start() {
         playerController = FindObjectOfType<PlayerController>();
+        ball = FindObjectOfType<Ball>();
     }
 
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0))
         {
-            // see if clicked on player
-            if (DoRayCast("Player") != null)
+            if (ball.PICKED_UP == false)
             {
-                // DoRayCast deals with gameObjects, so get the Player component
-                playerController.SwitchSelectPlayer(DoRayCast("Player").GetComponent<Player>());
+                // see if clicked on player
+                if (DoRayCast("Player") != null)
+                {
+                    // DoRayCast deals with gameObjects, so get the Player component
+                    playerController.SwitchSelectPlayer(DoRayCast("Player").GetComponent<Player>());
+                }
+                // de-select player if click on non-player location
+                else
+                {
+                    playerController.UnSelectPlayer();
+                }
             }
-            // de-select player if click on non-player location
-            else
-                playerController.UnSelectPlayer();
+            else if (ball.PICKED_UP == true)
+            {
+                ball.Shoot(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
         }
         if (Input.GetMouseButtonDown(1))
         {

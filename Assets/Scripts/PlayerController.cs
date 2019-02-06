@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     {
         UnSelectPlayer();
         selectedPlayer = newSelectedPlayer;
+        selectedPlayer.SELECTED = true;
         selectedPlayer.SetColour(selectColour);
     }
 
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour {
         if (selectedPlayer != null)
         {
             selectedPlayer.SetColour(playerColour);
+            selectedPlayer.SELECTED = false;
             selectedPlayer = null;
         }
     }

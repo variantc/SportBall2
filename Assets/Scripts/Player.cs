@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     SpriteRenderer sr;
     Vector3 dest;
     public float moveSpeed;
+    public bool SELECTED = false;
 
     float posTolerance = 0.2f;
 

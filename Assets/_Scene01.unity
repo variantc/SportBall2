@@ -731,6 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa9fac45e5b7c3499c9d56aea3916a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PICKED_UP: 0
+  shotSpeed: 10
 --- !u!1 &1417783573
 GameObject:
   m_ObjectHideFlags: 0
